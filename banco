@@ -1,0 +1,136 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.4
+-- Dumped by pg_dump version 12.4
+
+-- Started on 2020-09-20 02:10:41
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2823 (class 1262 OID 16393)
+-- Name: digiboard; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE digiboard WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252';
+
+
+ALTER DATABASE digiboard OWNER TO postgres;
+
+\connect digiboard
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 203 (class 1259 OID 16396)
+-- Name: pessoas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pessoas (
+    id integer NOT NULL,
+    nome character varying(100),
+    cargo character varying(100),
+    cpf character varying(100),
+    foto character varying(100)
+);
+
+
+ALTER TABLE public.pessoas OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16394)
+-- Name: pessoas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.pessoas_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pessoas_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2824 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: pessoas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.pessoas_id_seq OWNED BY public.pessoas.id;
+
+
+--
+-- TOC entry 2687 (class 2604 OID 16399)
+-- Name: pessoas id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pessoas ALTER COLUMN id SET DEFAULT nextval('public.pessoas_id_seq'::regclass);
+
+
+--
+-- TOC entry 2817 (class 0 OID 16396)
+-- Dependencies: 203
+-- Data for Name: pessoas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pessoas (id, nome, cargo, cpf, foto) FROM stdin;
+8	vcvxc	vxcvxcv	54545451245	image-1600574882361.jpg
+6	fggdfg	dfgdfg	77777777777	image-1600576487283.jpg
+3	teste	teste	52767555555	image-1600576534705.jpg
+4	ghgg	hghgh	44444444444	image-1600572859225.jpg
+5	teste	teste	99999999999	image-1600573076966.jpg
+7	rtret	ertert	56545454545	image-1600573951581.jpg
+\.
+
+
+--
+-- TOC entry 2825 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: pessoas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pessoas_id_seq', 8, true);
+
+
+--
+-- TOC entry 2689 (class 2606 OID 16401)
+-- Name: pessoas pessoas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pessoas
+    ADD CONSTRAINT pessoas_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2020-09-20 02:10:45
+
+--
+-- PostgreSQL database dump complete
+--
+
